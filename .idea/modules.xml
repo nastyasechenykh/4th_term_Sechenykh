@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/4th_term_Sechenykh.iml" filepath="$PROJECT_DIR$/4th_term_Sechenykh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/prog_tech/javafx_codes/javafx_codes.iml" filepath="$PROJECT_DIR$/prog_tech/javafx_codes/javafx_codes.iml" />
     </modules>
   </component>
 </project>
