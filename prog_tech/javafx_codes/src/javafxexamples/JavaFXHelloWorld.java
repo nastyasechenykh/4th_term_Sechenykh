@@ -1,7 +1,6 @@
 package javafxexamples;
 
 import javafx.application.Application;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
@@ -9,7 +8,7 @@ import javafx.stage.Stage;
 public class JavaFXHelloWorld extends Application {
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         stage.setTitle("Hello, goddamn JavaFX");
 
         Button button = initInterface();
