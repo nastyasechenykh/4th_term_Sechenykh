@@ -3,7 +3,7 @@ package javafxexamples;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -20,18 +20,22 @@ public class Messenger extends Application {
     }
 
     private Parent createInterface() {
-        GridPane field = new GridPane();
         HBox hBig = new HBox();
         VBox vLeft = new VBox();
         HBox hLittle = new HBox();
         VBox vRight = new VBox();
         Label contacts = new Label("Контакты");
+        ListView<String> listNames = new ListView<>();
+        TextField text = new TextField("Введите сообщение");
+        Button b = new Button("Отправить");
+        TextArea display = new TextArea();
 
-        field.add(hBig, 0, 0);
         hBig.getChildren().addAll(vLeft, vRight);
-        vLeft.getChildren().add(hLittle);
+        vLeft.getChildren().addAll(display, hLittle);
+        hLittle.getChildren().addAll(text, b);
+        vRight.getChildren().addAll(contacts, listNames);
 
 
-        return field;
+        return hBig;
     }
 }
