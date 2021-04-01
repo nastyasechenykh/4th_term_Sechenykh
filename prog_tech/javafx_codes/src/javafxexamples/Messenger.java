@@ -6,7 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -38,7 +37,10 @@ public class Messenger extends Application {
         hLittle.getChildren().addAll(text, b);
         vRight.getChildren().addAll(contacts, listNames);
 
-        b.setOnAction(event -> display.setText(text.getText()));
+        b.setOnAction(event -> {
+            display.setText(display.getText() + text.getText() + "\n");
+            text.clear();
+        });
 
         return hBig;
     }
