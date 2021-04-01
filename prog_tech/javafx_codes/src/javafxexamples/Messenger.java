@@ -1,6 +1,8 @@
 package javafxexamples;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -25,7 +27,8 @@ public class Messenger extends Application {
         HBox hLittle = new HBox();
         VBox vRight = new VBox();
         Label contacts = new Label("Контакты");
-        ListView<String> listNames = new ListView<>();
+        ObservableList<String> items = FXCollections.observableArrayList("Петров", "Катюшка", "Бублик", "Васнецов");
+        ListView<String> listNames = new ListView<>(items);
         TextField text = new TextField("Введите сообщение");
         Button b = new Button("Отправить");
         TextArea display = new TextArea();
@@ -35,6 +38,7 @@ public class Messenger extends Application {
         hLittle.getChildren().addAll(text, b);
         vRight.getChildren().addAll(contacts, listNames);
 
+        b.setOnAction(event -> display.setText(text.getText()));
 
         return hBig;
     }
