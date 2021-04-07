@@ -7,12 +7,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.shape.Circle;
 
-public class Circle extends Application {
+public class CircleTask extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Прикольчики с кругом");
@@ -26,21 +25,28 @@ public class Circle extends Application {
         HBox main = new HBox();
         VBox left = new VBox();
         Pane display = new Pane();
-        Slider slider = new Slider(1, 10, 5);
+        Slider slider = new Slider(25, 100, 55);
         ColorPicker cp1 = new ColorPicker();
         ColorPicker cp2 = new ColorPicker();
         Label sliderLabel = new Label("Радиус");
         Label cpfLabel = new Label("Цвет круга");
         Label cpsLabel = new Label("Радиус");
-        //Circle circle = new Circle();
+        Circle circle = new Circle(slider.getValue());
 
-        //display.getChildren().add(circle);
         main.getChildren().addAll(left, display);
         left.getChildren().addAll(sliderLabel, slider, cpfLabel, cp1, cpsLabel, cp2);
+        display.getChildren().add(circle);
+
+        HBox.setHgrow(display, Priority.ALWAYS);
 
 
-
+        circle.setCenterX(250); //display.getWidth()/2
+        circle.setCenterY(150); //display.getHeight()/2
         left.setAlignment(Pos.TOP_CENTER);
+
+
+        display.setBackground(new Background(new BackgroundFill(cp2.getValue(), new CornerRadii(0), null)));
+        circle.setFill(cp1.getValue());
 
         return main;
     }
