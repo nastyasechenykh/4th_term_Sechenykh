@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -36,6 +37,9 @@ public class Messenger extends Application {
         vLeft.getChildren().addAll(display, hLittle);
         hLittle.getChildren().addAll(text, b);
         vRight.getChildren().addAll(contacts, listNames);
+
+        VBox.setVgrow(display, Priority.ALWAYS);
+        HBox.setHgrow(text, Priority.ALWAYS);
 
         b.setOnAction(event -> {
             display.setText(display.getText() + text.getText() + "\n");
