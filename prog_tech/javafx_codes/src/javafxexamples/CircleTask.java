@@ -1,6 +1,7 @@
 package javafxexamples;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,13 +26,13 @@ public class CircleTask extends Application {
         HBox main = new HBox();
         VBox left = new VBox();
         Pane display = new Pane();
-        Slider slider = new Slider(25, 100, 55);
+        Slider slider = new Slider(0, 100, 55);
         ColorPicker cp1 = new ColorPicker();
         ColorPicker cp2 = new ColorPicker();
         Label sliderLabel = new Label("Радиус");
         Label cpfLabel = new Label("Цвет круга");
         Label cpsLabel = new Label("Радиус");
-        Circle circle = new Circle(slider.getValue());
+        Circle circle = new Circle(25);
 
         main.getChildren().addAll(left, display);
         left.getChildren().addAll(sliderLabel, slider, cpfLabel, cp1, cpsLabel, cp2);
@@ -44,9 +45,9 @@ public class CircleTask extends Application {
         circle.setCenterY(150); //display.getHeight()/2
         left.setAlignment(Pos.TOP_CENTER);
 
-
-        display.setBackground(new Background(new BackgroundFill(cp2.getValue(), new CornerRadii(0), null)));
-        circle.setFill(cp1.getValue());
+        slider.addEventHandler(ActionEvent.ACTION, e -> circle.setRadius(slider.getValue()));
+        cp1.setOnAction(event -> circle.setFill(cp1.getValue()));
+        cp2.setOnAction(event -> display.setBackground(new Background(new BackgroundFill(cp2.getValue(), new CornerRadii(0), null))));
 
         return main;
     }
