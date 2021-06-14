@@ -3,4 +3,5 @@
         requires javafx.controls;
 
         opens javafxexamples;
+        opens pixels;
     }
