@@ -40,7 +40,7 @@ public class ListenersExample extends Application {
         b.setOnAction(event -> {
             if (i == phrases.length) {
                 vb.getChildren().clear();
-                vb.getChildren().add(new ImageView(new Image("https://i.gifer.com/origin/00/00ae53a95ee7af0be395f5291d792c9a.gif")));
+                vb.getChildren().add(new ImageView(new Image("https://acegif.com/wp-content/uploads/gif-explosion-49.gif")));
             } else label1.setText(phrases[i++]);
         });
 

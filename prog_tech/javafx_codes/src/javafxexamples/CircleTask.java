@@ -1,7 +1,6 @@
 package javafxexamples;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +10,8 @@ import javafx.scene.control.Slider;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.shape.Circle;
+
+import static javafx.beans.binding.Bindings.min;
 
 public class CircleTask extends Application {
     @Override
@@ -31,7 +32,7 @@ public class CircleTask extends Application {
         ColorPicker cp2 = new ColorPicker();
         Label sliderLabel = new Label("Радиус");
         Label cpfLabel = new Label("Цвет круга");
-        Label cpsLabel = new Label("Радиус");
+        Label cpsLabel = new Label("Цвет поля");
         Circle circle = new Circle(25);
 
         main.getChildren().addAll(left, display);
@@ -41,11 +42,14 @@ public class CircleTask extends Application {
         HBox.setHgrow(display, Priority.ALWAYS);
 
 
-        circle.setCenterX(250); //display.getWidth()/2
-        circle.setCenterY(150); //display.getHeight()/2
         left.setAlignment(Pos.TOP_CENTER);
+        display.setMaxWidth(Double.MAX_VALUE);
+        display.setMaxHeight(Double.MAX_VALUE);
 
-        slider.addEventHandler(ActionEvent.ACTION, e -> circle.setRadius(slider.getValue()));
+        circle.radiusProperty().bind(slider.valueProperty());
+        circle.centerXProperty().bind(display.widthProperty().divide(2));
+        circle.centerYProperty().bind(display.heightProperty().divide(2));
+        slider.maxProperty().bind(min(display.heightProperty(), display.widthProperty()).divide(2));
         cp1.setOnAction(event -> circle.setFill(cp1.getValue()));
         cp2.setOnAction(event -> display.setBackground(new Background(new BackgroundFill(cp2.getValue(), new CornerRadii(0), null))));
 
